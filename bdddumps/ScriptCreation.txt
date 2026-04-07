@@ -1,0 +1,62 @@
+create database codecase;
+
+use codecase;
+
+CREATE TABLE utilisateur(
+   idUser INT AUTO_INCREMENT,
+   pseudoUser VARCHAR(20) NOT NULL,
+   passwordUser VARCHAR(50) NOT NULL,
+   signupDateUser DATE NOT NULL,
+   lastSignInUser DATETIME NOT NULL,
+   emailUser VARCHAR(150) NOT NULL,
+   Role VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idUser),
+   UNIQUE(pseudoUser),
+   UNIQUE(emailUser)
+);
+
+CREATE TABLE Tags(
+   idTag INT AUTO_INCREMENT,
+   intituleTag VARCHAR(20) NOT NULL,
+   PRIMARY KEY(idTag),
+   UNIQUE(intituleTag)
+);
+
+CREATE TABLE CatLangueCode(
+   idCat INT AUTO_INCREMENT,
+   intituleCat VARCHAR(25) NOT NULL,
+   PRIMARY KEY(idCat),
+   UNIQUE(intituleCat)
+);
+
+CREATE TABLE Post(
+   idPost INT AUTO_INCREMENT,
+   titrePost VARCHAR(100) NOT NULL,
+   contenuPost TEXT NOT NULL,
+   dateCreation DATETIME NOT NULL,
+   descriptionPost VARCHAR(250),
+   idCat INT NOT NULL,
+   idUser INT NOT NULL,
+   PRIMARY KEY(idPost),
+   FOREIGN KEY(idCat) REFERENCES CatLangueCode(idCat),
+   FOREIGN KEY(idUser) REFERENCES utilisateur(idUser)
+);
+
+CREATE TABLE Epingler(
+   idUser INT,
+   idPost INT,
+   PRIMARY KEY(idUser, idPost),
+   FOREIGN KEY(idUser) REFERENCES utilisateur(idUser),
+   FOREIGN KEY(idPost) REFERENCES Post(idPost)
+);
+
+CREATE TABLE Attribuer(
+   idPost INT,
+   idTag INT,
+   PRIMARY KEY(idPost, idTag),
+   FOREIGN KEY(idPost) REFERENCES Post(idPost),
+   FOREIGN KEY(idTag) REFERENCES Tags(idTag)
+);
+
+
+
