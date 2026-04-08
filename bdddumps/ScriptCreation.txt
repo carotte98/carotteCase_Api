@@ -9,6 +9,7 @@ CREATE TABLE utilisateur(
    signupDateUser DATE NOT NULL,
    lastSignInUser DATETIME NOT NULL,
    emailUser VARCHAR(150) NOT NULL,
+   `avatarUser` VARCHAR(250),
    Role VARCHAR(50) NOT NULL,
    PRIMARY KEY(idUser),
    UNIQUE(pseudoUser),
