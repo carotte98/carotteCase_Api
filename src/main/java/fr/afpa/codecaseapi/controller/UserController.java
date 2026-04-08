@@ -3,6 +3,7 @@ package fr.afpa.codecaseapi.controller;
 import fr.afpa.codecaseapi.model.User;
 import fr.afpa.codecaseapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -25,8 +26,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/user")
-    public User createUser(@RequestBody User user){
-        return userService.saveUser(user);
+    public ResponseEntity<User> createUser(@RequestBody User user){
+        //return userService.saveUser(user);
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/users")
