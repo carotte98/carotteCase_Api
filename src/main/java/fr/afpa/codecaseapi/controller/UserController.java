@@ -1,8 +1,10 @@
 package fr.afpa.codecaseapi.controller;
 
+import fr.afpa.codecaseapi.exception.ExceptionManager;
 import fr.afpa.codecaseapi.model.User;
 import fr.afpa.codecaseapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,76 +29,97 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseEntity<User> createUser(@RequestBody User user){
-        //return userService.saveUser(user);
-        return ResponseEntity.ok(user);
+        try{
+            return ResponseEntity.ok(userService.saveUser(user));
+        } catch (Exception e) {
+            return ExceptionManager.handleException(e);
+        }
+
     }
 
     @GetMapping("/users")
-    public Iterable<User> getUsers(){
-        return userService.getUsers();
+    public ResponseEntity<Iterable<User>> getUsers(){
+        try{
+            return ResponseEntity.ok(userService.getUsers());
+        }catch (Exception e) {
+            return ExceptionManager.handleException(e);
+        }
     }
 
     @GetMapping("/user/{id}")
-    public User getUser(@PathVariable("id") int id){
-        Optional<User> user = userService.getUser(id);
-        if (user.isPresent()){
-            return user.get();
-        }else{
-            return null;
+    public ResponseEntity<User> getUser(@PathVariable("id") int id){
+        try{
+            Optional<User> user = userService.getUser(id);
+            if (user.isPresent()){
+                return ResponseEntity.ok(user.get());
+            }else{
+                return new ResponseEntity("User non présent", HttpStatus.NOT_FOUND);
+            }
+        }catch (Exception e) {
+            return ExceptionManager.handleException(e);
         }
     }
 
     @PutMapping("/user/{id}")
-    public User updateUser(@PathVariable("id") int id, @RequestBody User user){
+    public ResponseEntity<User> updateUser(@PathVariable("id") int id, @RequestBody User user){
 
-        Optional<User> temp = userService.getUser(id);
+        try{
+            Optional<User> temp = userService.getUser(id);
 
-        if(temp.isPresent()){
-            User current = temp.get();
+            if(temp.isPresent()){
+                User current = temp.get();
 
-           String pseudo = user.getPseudoUser();
-           String pass = user.getPasswordUser();
-           String email = user.getEmailUser();
-           String avatar = user.getAvatarUser();
-           String role = user.getRole();//
-           LocalDate signUp = user.getSignupDateUser();
-           LocalDate last = user.getLastSignInUser();
+                String pseudo = user.getPseudoUser();
+                String pass = user.getPasswordUser();
+                String email = user.getEmailUser();
+                String avatar = user.getAvatarUser();
+                String role = user.getRole();//
+                LocalDate signUp = user.getSignupDateUser();
+                LocalDate last = user.getLastSignInUser();
 
-            current.setPseudoUser(pseudo != null ? pseudo : current.getPseudoUser());
+                current.setPseudoUser(pseudo != null ? pseudo : current.getPseudoUser());
 
-            if (pass != null){
-                current.setPasswordUser(pass);
+                if (pass != null){
+                    current.setPasswordUser(pass);
+                }
+
+                if (email != null){
+                    current.setEmailUser(email);
+                }
+
+                if (avatar != null){
+                    current.setAvatarUser(avatar);
+                }
+
+                if (role != null){
+                    current.setRole(role);
+                }
+
+                if (signUp != null){
+                    current.setSignupDateUser(signUp);
+                }
+
+                if (last != null){
+                    current.setLastSignInUser(last);
+                }
+                userService.saveUser(current);
+                return ResponseEntity.ok(current);
+            }else {
+                return new ResponseEntity("User non présent", HttpStatus.NOT_FOUND);
             }
-
-            if (email != null){
-                current.setEmailUser(email);
-            }
-
-            if (avatar != null){
-                current.setAvatarUser(avatar);
-            }
-
-            if (role != null){
-                current.setRole(role);
-            }
-
-            if (signUp != null){
-                current.setSignupDateUser(signUp);
-            }
-
-            if (last != null){
-                current.setLastSignInUser(last);
-            }
-            userService.saveUser(current);
-            return current;
-        }else {
-            return null;
+        }catch (Exception e){
+            return ExceptionManager.handleException(e);
         }
     }
 
     @DeleteMapping("user/{id}")
-    public void deleteUser(@PathVariable("id") int id){
-        userService.deleteUser(id);
+    public ResponseEntity<String> deleteUser(@PathVariable("id") int id){
+        try{
+            userService.deleteUser(id);
+            return ResponseEntity.ok("User supprimé");
+        }catch (Exception e){
+            return ExceptionManager.handleException(e);
+        }
     }
 
 }

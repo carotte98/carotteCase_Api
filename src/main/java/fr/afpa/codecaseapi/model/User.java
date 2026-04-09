@@ -1,6 +1,9 @@
 package fr.afpa.codecaseapi.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -27,23 +30,30 @@ public class User {
     private int idUser;
 
     @Column(name = "pseudoUser")
+    @Size(min = 3, max = 20)
     private String pseudoUser;
 
     @Column(name = "passwordUser")
+    @NotBlank
     private String passwordUser;
 
     @Column(name = "signupDateUser")
+    @NotNull
     private LocalDate signupDateUser;
 
     @Column(name = "lastSignInUser")
+    @NotNull
     private LocalDate lastSignInUser;
 
     @Column(name = "emailUser")
+    @Size(min = 8, max = 150)
     private String emailUser;
 
     @Column(name = "avatarUser")
     private String avatarUser;
 
     @Column(name = "Role")
+    @NotBlank
+    @Max(50)
     private String role;
 }

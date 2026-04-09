@@ -1,6 +1,11 @@
 package fr.afpa.codecaseapi.exception;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.sql.SQLException;
+import java.util.HashMap;
 
 
 /**
@@ -38,11 +43,12 @@ public class ExceptionManager {
      * @param ex l'exception à gérer
      * @return Objet de type RetourException
      */
-    public static RetourException handleException(Exception ex) {
+    public static ResponseEntity handleException(Exception ex) {
 
-        if (ex instanceof ResponseStatusException) {
+        if (ex instanceof SQLException) {
 
-            return handleStatus(ex);
+            SQLException sx = (SQLException) ex;
+            return handleSQL(sx);
         }
         else {
 
@@ -61,13 +67,24 @@ public class ExceptionManager {
      * @param ex l'exception à gérer
      * @return Objet de type RetourException
      */
-    private static RetourException handleStatus(Exception ex) {
+    private static ResponseEntity handleSQL(SQLException ex) {
 
-        RetourException retour = new RetourException();
+        ResponseEntity retour;
 
-        retour.setSeverity(5);
-        retour.setMsgUtilisateur("Une erreur applicative est survenue, veuillez"
-                + " contactez la DSI !");
+        switch (ex.getErrorCode()) {
+            case 1062:
+                retour = new ResponseEntity<>("Un élément de même nom existe déjà", HttpStatus.BAD_REQUEST);
+                break;
+            case 1451:
+                retour = new ResponseEntity<>("L'élément est encore lié à des enfants", HttpStatus.INTERNAL_SERVER_ERROR);
+                break;
+            case 1406:
+                retour = new ResponseEntity<>("Un champs est trop long", HttpStatus.BAD_REQUEST);
+                break;
+            default:
+                retour = new ResponseEntity<>("Exception inconnue", HttpStatus.INTERNAL_SERVER_ERROR);
+                break;
+        }
 
 
         return retour;
@@ -84,16 +101,9 @@ public class ExceptionManager {
      * @param ex l'exception à gérer
      * @return Objet de type RetourException
      */
-    private static RetourException handleUnknown(Exception ex) {
+    private static ResponseEntity handleUnknown(Exception ex) {
 
-        RetourException retour = new RetourException();
-
-        retour.setSeverity(5);
-        retour.setMsgUtilisateur("Une erreur applicative est survenue, veuillez"
-                + " contactez la DSI !");
-
-
-        return retour;
+        return new ResponseEntity<>("Exception inconnue", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
  
