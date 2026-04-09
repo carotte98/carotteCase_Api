@@ -22,7 +22,8 @@ import java.util.Optional;
  * @since 2026/04/08
  */
 @RestController
-public class UserController {
+public class
+UserController {
 
     @Autowired
     private UserService userService;
