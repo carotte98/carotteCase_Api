@@ -5,12 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 import lombok.Data;
 
@@ -35,52 +39,52 @@ public class Post {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "idPost")
-  private Integer idPost;
+  private Integer id;
 
   /**
    * Variable titre.
    */
   @Size(min = 3, max = 100)
   @Column(name = "titrePost")
-  private String titrePost;
+  private String titre;
 
   /**
    * Variable description.
    */
   @Size(max = 250)
   @Column(name = "descriptionPost")
-  private String descriptionPost;
+  private String description;
 
   /**
    * Variable contenu.
    */
   @NotEmpty()
   @Column(name = "contenuPost")
-  private String contenuPost;
+  private String contenu;
 
   /**
    * Variable userId.
    */
   @Column(name = "idUser")
-  private Integer idUser;
+  private Integer userId;
 
   /**
    * Variable language de type Tag.
    */
-  @OneToMany(mappedBy = "post")
-  @Column(name = "idCat")
-  private Set<Tag> idCat;
+  @ManyToOne()
+//  @Column(name = "idCat")
+  private Tag language;
 
   /**
    * Variable tagCustom, dans une Arraylist de type Tag.
    */
   @ManyToMany(mappedBy = "post")
-  Set<Tag> tagCustom;
+  List<Tag> tagCustom;
 
   /**
    * Variable creationPost.
    */
   @Column(name = "dateCreation")
-  private LocalDate dateCreation;
+  private LocalDate creationPost;
 
 }

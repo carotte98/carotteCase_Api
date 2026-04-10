@@ -14,21 +14,14 @@ CREATE TABLE utilisateur(
    PRIMARY KEY(idUser),
    UNIQUE(pseudoUser),
    UNIQUE(emailUser)
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE Tags(
    idTag INT AUTO_INCREMENT,
-   intituleTag VARCHAR(20) NOT NULL,
+   intituleTag VARCHAR(25) NOT NULL,
    PRIMARY KEY(idTag),
    UNIQUE(intituleTag)
-);
-
-CREATE TABLE CatLangueCode(
-   idCat INT AUTO_INCREMENT,
-   intituleCat VARCHAR(25) NOT NULL,
-   PRIMARY KEY(idCat),
-   UNIQUE(intituleCat)
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE Post(
    idPost INT AUTO_INCREMENT,
@@ -39,9 +32,9 @@ CREATE TABLE Post(
    idCat INT NOT NULL,
    idUser INT NOT NULL,
    PRIMARY KEY(idPost),
-   FOREIGN KEY(idCat) REFERENCES CatLangueCode(idCat),
+   FOREIGN KEY(idCat) REFERENCES Tags(idTag),
    FOREIGN KEY(idUser) REFERENCES utilisateur(idUser)
-);
+)ENGINE=InnoDB;
 
 CREATE TABLE Epingler(
    idUser INT,
@@ -49,15 +42,4 @@ CREATE TABLE Epingler(
    PRIMARY KEY(idUser, idPost),
    FOREIGN KEY(idUser) REFERENCES utilisateur(idUser),
    FOREIGN KEY(idPost) REFERENCES Post(idPost)
-);
-
-CREATE TABLE Attribuer(
-   idPost INT,
-   idTag INT,
-   PRIMARY KEY(idPost, idTag),
-   FOREIGN KEY(idPost) REFERENCES Post(idPost),
-   FOREIGN KEY(idTag) REFERENCES Tags(idTag)
-);
-
-
-
+)ENGINE=InnoDB;

@@ -30,7 +30,7 @@
 		<java.version>25</java.version>
 		<sonar.projectKey>codecaseapi</sonar.projectKey>
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
-		<sonar.token>sqp_0fbd0b9afd01bc1e16eee1da1fffbddb9d8d1cd1</sonar.token>
+		<sonar.token>sqp_0be26ecb56c5ba4d6a88acae3082d24a04523f22</sonar.token>
 	</properties>
 	<dependencies>
 		<dependency>
