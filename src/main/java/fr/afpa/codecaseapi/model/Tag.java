@@ -27,6 +27,6 @@ public class Tag {
   @Id
   private Integer id;
 
-  @OneToMany(mappedBy = "language")
+  @OneToMany(mappedBy = "idCat")
   private List<Post> posts;
 }

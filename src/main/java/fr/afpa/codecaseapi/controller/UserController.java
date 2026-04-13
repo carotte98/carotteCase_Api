@@ -31,6 +31,7 @@ UserController {
     @PostMapping("/user")
     public ResponseEntity<User> createUser(@RequestBody User user){
         try{
+            System.out.println(user.toString());
             return ResponseEntity.ok(userService.saveUser(user));
         } catch (Exception e) {
             return ExceptionManager.handleException(e);
