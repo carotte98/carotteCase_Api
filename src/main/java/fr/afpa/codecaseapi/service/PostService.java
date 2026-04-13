@@ -47,7 +47,8 @@ public class PostService {
    * @return Un optional de Posts
    */
   public Optional<Post> getPost(int id){
-    return  postRepository.findById(id);  }
+    return  postRepository.findById(id);
+  }
 
   /**
    * Méthode savePost.

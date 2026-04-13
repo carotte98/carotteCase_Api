@@ -2,8 +2,8 @@ package fr.afpa.codecaseapi.controller;
 
 import fr.afpa.codecaseapi.exception.ExceptionManager;
 import fr.afpa.codecaseapi.model.Post;
+import fr.afpa.codecaseapi.model.Tag;
 import fr.afpa.codecaseapi.service.PostService;
-import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +81,7 @@ public class PostController {
         String titre = post.getTitre();
         String description = post.getDescription();
         String contenu = post.getContenu();
-        Set language = post.getLanguage();
+        Tag language = post.getLanguage();
         // À voir pour le tagCustom comment il est géré dans la base de donnée
         // (Est-ce qu'il peut être modifié par l'utilisateur ?) → Si oui,
         // ajouter un if() avec set.
@@ -112,7 +112,7 @@ public class PostController {
     }
   }
 
-  @DeleteMapping("user/{id}")
+  @DeleteMapping("post/{id}")
   public ResponseEntity<String> deletePost(@PathVariable("id") int id){
     try{
       postService.deletePost(id);

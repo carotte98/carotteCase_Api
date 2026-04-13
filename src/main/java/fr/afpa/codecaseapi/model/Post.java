@@ -39,52 +39,52 @@ public class Post {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "idPost")
-  private Integer id;
+  private Integer idPost;
 
   /**
    * Variable titre.
    */
   @Size(min = 3, max = 100)
   @Column(name = "titrePost")
-  private String titre;
+  private String titrePost;
 
   /**
    * Variable description.
    */
   @Size(max = 250)
   @Column(name = "descriptionPost")
-  private String description;
+  private String descriptionPost;
 
   /**
    * Variable contenu.
    */
   @NotEmpty()
   @Column(name = "contenuPost")
-  private String contenu;
+  private String contenuPost;
 
   /**
    * Variable userId.
    */
   @Column(name = "idUser")
-  private Integer userId;
+  private Integer idUser;
 
   /**
    * Variable language de type Tag.
    */
   @ManyToOne()
 //  @Column(name = "idCat")
-  private Tag language;
+  private Tag idCat;
 
   /**
    * Variable tagCustom, dans une Arraylist de type Tag.
    */
-  @ManyToMany(mappedBy = "post")
-  List<Tag> tagCustom;
+//  @ManyToMany(mappedBy = "post")
+//  List<Tag> tagCustom;
 
   /**
    * Variable creationPost.
    */
   @Column(name = "dateCreation")
-  private LocalDate creationPost;
+  private LocalDate dateCreation;
 
 }
