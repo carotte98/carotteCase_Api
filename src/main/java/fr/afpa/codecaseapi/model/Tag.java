@@ -13,11 +13,11 @@ import lombok.Data;
  * Tag
  * <i>de fr.afpa.codecaseapi.model</i>
  * <hr>
- * <p></p>
+ * <p>Modèle Tag, lié à JPA</p>
  *
  * @author Loïc RICHARD
  * @version 0.0.1
- * @since 13/04/2026
+ * @since 2026/04/13
  */
 
 @Data
