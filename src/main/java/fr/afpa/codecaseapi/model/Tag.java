@@ -5,6 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import java.util.List;
 import java.util.Set;
 import lombok.Data;
@@ -22,11 +23,12 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "tags")
 public class Tag {
 
   @Id
-  private Integer id;
+  private Integer idTag;
 
-  @OneToMany(mappedBy = "idCat")
-  private List<Post> posts;
+//  @OneToMany(mappedBy = "idCat")
+//  private List<Post> posts;
 }
