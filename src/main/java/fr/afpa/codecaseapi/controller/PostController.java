@@ -78,27 +78,27 @@ public class PostController {
       if(temp.isPresent()){
         Post current = temp.get();
 
-        String titre = post.getTitre();
-        String description = post.getDescription();
-        String contenu = post.getContenu();
-        Tag language = post.getLanguage();
+        String titre = post.getTitrePost();
+        String description = post.getDescriptionPost();
+        String contenu = post.getContenuPost();
+        Tag language = post.getIdCat();
         // À voir pour le tagCustom comment il est géré dans la base de donnée
         // (Est-ce qu'il peut être modifié par l'utilisateur ?) → Si oui,
         // ajouter un if() avec set.
 //        Set tagCustom = post.getTagCustom();
 
-        current.setTitre(titre != null ? titre : current.getTitre());
+        current.setTitrePost(titre != null ? titre : current.getTitrePost());
 
         if (description != null){
-          current.setDescription(description);
+          current.setDescriptionPost(description);
         }
 
         if (contenu != null){
-          current.setContenu(contenu);
+          current.setContenuPost(contenu);
         }
 
         if (language != null){
-          current.setLanguage(language);
+          current.setIdCat(language);
         }
 
         postService.savePost(current);
