@@ -1,7 +1,6 @@
 package fr.afpa.codecaseapi.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -54,6 +53,6 @@ public class User {
 
     @Column(name = "Role")
     @NotBlank
-    @Max(50)
-    private String role;
+    @Size(max = 50)
+    private String Role;
 }

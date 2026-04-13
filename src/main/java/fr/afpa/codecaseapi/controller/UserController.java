@@ -22,7 +22,8 @@ import java.util.Optional;
  * @since 2026/04/08
  */
 @RestController
-public class UserController {
+public class
+UserController {
 
     @Autowired
     private UserService userService;
@@ -30,6 +31,7 @@ public class UserController {
     @PostMapping("/user")
     public ResponseEntity<User> createUser(@RequestBody User user){
         try{
+            System.out.println(user.toString());
             return ResponseEntity.ok(userService.saveUser(user));
         } catch (Exception e) {
             return ExceptionManager.handleException(e);

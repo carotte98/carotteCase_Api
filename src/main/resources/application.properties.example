@@ -19,3 +19,5 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 #A LAISSER SOUS NONE
 spring.jpa.hibernate.ddl-auto=none
+
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

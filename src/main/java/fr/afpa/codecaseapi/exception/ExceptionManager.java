@@ -103,7 +103,7 @@ public class ExceptionManager {
      */
     private static ResponseEntity handleUnknown(Exception ex) {
 
-        return new ResponseEntity<>("Exception inconnue", HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
  
