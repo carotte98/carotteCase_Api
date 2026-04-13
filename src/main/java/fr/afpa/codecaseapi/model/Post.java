@@ -72,7 +72,7 @@ public class Post {
    * Variable language de type Tag.
    */
   @ManyToOne()
-//  @Column(name = "idCat")
+  @JoinColumn(name = "idCat")
   private Tag idCat;
 
   /**

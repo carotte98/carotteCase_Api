@@ -8,7 +8,6 @@ import java.util.Set;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-
 /**
  * Tag
  * <i>de fr.afpa.codecaseapi.model</i>
@@ -19,7 +18,6 @@ import lombok.Data;
  * @version 0.0.1
  * @since 2026/04/13
  */
-
 @Data
 @Entity
 @Table(name = "Tags")
@@ -40,3 +38,4 @@ public class Tag {
   @Column(name ="intituleTag")
   private String intituleTag;
 }
+
