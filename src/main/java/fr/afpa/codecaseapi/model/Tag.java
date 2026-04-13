@@ -1,12 +1,12 @@
 package fr.afpa.codecaseapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+
 import java.util.List;
 import java.util.Set;
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 /**
@@ -15,17 +15,30 @@ import lombok.Data;
  * <hr>
  * <p></p>
  *
- * @author Calderoli Alexandre
+ * @author Loïc RICHARD
  * @version 0.0.1
- * @since 09/04/2026
+ * @since 13/04/2026
  */
 
 @Data
 @Entity
+@Table(name = "Tags")
 public class Tag {
+  /**
+   * Variable ID.
+   */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name  = "idTag")
+    private Integer idTag;
 
-  @Id
-  private Integer id;
+  /**
+   * Variable intitulé
+   */
+  @Size(min = 3, max = 30)
+  @NotEmpty()
+  @Column(name ="intituleTag")
+  private String intituleTag;
 
   @OneToMany(mappedBy = "idCat")
   private List<Post> posts;
