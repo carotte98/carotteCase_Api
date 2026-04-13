@@ -2,10 +2,8 @@ package fr.afpa.codecaseapi.controller;
 
 import fr.afpa.codecaseapi.exception.ExceptionManager;
 import fr.afpa.codecaseapi.model.Post;
-import fr.afpa.codecaseapi.model.Tag;
 import fr.afpa.codecaseapi.service.PostService;
 import java.util.Optional;
-import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
