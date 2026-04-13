@@ -39,7 +39,4 @@ public class Tag {
   @NotEmpty()
   @Column(name ="intituleTag")
   private String intituleTag;
-
-  @OneToMany(mappedBy = "idCat")
-  private List<Post> posts;
 }

@@ -61,7 +61,7 @@ public class TagService {
      * @return le taf créé ou modifier
      */
 
-    public Tag saveTage(Tag tag) {
+    public Tag saveTag(Tag tag) {
         return tagRepository.save(tag);
     }
 

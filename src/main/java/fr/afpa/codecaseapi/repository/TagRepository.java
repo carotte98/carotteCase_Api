@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * Interface CRUD pour Tag
  * </p>
  *
- * @author loicrichard
+ * @author loic richard
  * @version 0.0.1
  * @since 2026/04/13
  */
