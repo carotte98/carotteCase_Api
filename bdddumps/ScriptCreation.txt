@@ -29,7 +29,7 @@ CREATE TABLE Post(
    contenuPost TEXT NOT NULL,
    dateCreation DATETIME NOT NULL,
    descriptionPost VARCHAR(250),
-   idCat INT NOT NULL,
+   idTag INT NOT NULL,
    idUser INT NOT NULL,
    PRIMARY KEY(idPost),
    FOREIGN KEY(idCat) REFERENCES Tags(idTag),

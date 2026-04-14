@@ -72,8 +72,8 @@ public class Post {
    * Variable language de type Tag.
    */
   @ManyToOne()
-  @JoinColumn(name = "idCat")
-  private Tag idCat;
+  @JoinColumn(name = "idTag")
+  private Tag idTag;
 
   /**
    * Variable tagCustom, dans une Arraylist de type Tag.

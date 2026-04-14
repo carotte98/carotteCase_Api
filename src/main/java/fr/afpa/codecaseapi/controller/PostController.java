@@ -80,7 +80,7 @@ public class PostController {
         String titre = post.getTitrePost();
         String description = post.getDescriptionPost();
         String contenu = post.getContenuPost();
-        Tag language = post.getIdCat();
+        Tag language = post.getIdTag();
         // À voir pour le tagCustom comment il est géré dans la base de donnée
         // (Est-ce qu'il peut être modifié par l'utilisateur ?) → Si oui,
         // ajouter un if() avec set.
@@ -97,7 +97,7 @@ public class PostController {
         }
 
         if (language != null){
-          current.setIdCat(language);
+          current.setIdTag(language);
         }
 
         postService.savePost(current);
