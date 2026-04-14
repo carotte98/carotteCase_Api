@@ -26,7 +26,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUser")
-    private int idUser;
+    private Integer idUser;
 
     @Column(name = "pseudoUser")
     @Size(min = 3, max = 20)
@@ -54,5 +54,5 @@ public class User {
     @Column(name = "Role")
     @NotBlank
     @Size(max = 50)
-    private String Role;
+    private String role;
 }
