@@ -62,6 +62,20 @@ UserController {
         }
     }
 
+    @GetMapping("/userMail/{email}")
+    public ResponseEntity<User> getUserByMail(@PathVariable("email") String email){
+        try{
+            Optional<User> user = userService.getUserByEmail(email);
+            if (user.isPresent()){
+                return ResponseEntity.ok(user.get());
+            }else{
+                return new ResponseEntity("User non présent", HttpStatus.NOT_FOUND);
+            }
+        }catch (Exception e) {
+            return ExceptionManager.handleException(e);
+        }
+    }
+
     @PutMapping("/user/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") int id, @RequestBody User user){
 

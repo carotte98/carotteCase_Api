@@ -52,6 +52,19 @@ public class UserService {
     }
 
     /**
+     * Méthode getUserByEmail.
+     *
+     *<i>de UserService</i>
+     *<hr>
+     *<p>Prends un email et renvoie le User en question s'il existe</p>
+     * @param email le email du User cherché
+     * @return Un optional de Users
+     */
+    public Optional<User> getUserByEmail(String email){
+        return  userRepository.findByEmailUser(email);
+    }
+
+    /**
      * Méthode saveUser.
      *
      *<i>de UserService</i>
