@@ -3,6 +3,7 @@ package fr.afpa.codecaseapi.controller;
 import fr.afpa.codecaseapi.exception.ExceptionManager;
 import fr.afpa.codecaseapi.model.Post;
 import fr.afpa.codecaseapi.model.Tag;
+import fr.afpa.codecaseapi.model.User;
 import fr.afpa.codecaseapi.service.PostService;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +80,7 @@ public class PostController {
 
         String titre = post.getTitrePost();
         String description = post.getDescriptionPost();
+        User user = post.getIdUser();
         String contenu = post.getContenuPost();
         Tag language = post.getIdTag();
         // À voir pour le tagCustom comment il est géré dans la base de donnée
@@ -87,6 +89,8 @@ public class PostController {
 //        Set tagCustom = post.getTagCustom();
 
         current.setTitrePost(titre != null ? titre : current.getTitrePost());
+
+        current.setIdUser(user);
 
         if (description != null){
           current.setDescriptionPost(description);

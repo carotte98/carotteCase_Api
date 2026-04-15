@@ -65,8 +65,9 @@ public class Post {
   /**
    * Variable userId.
    */
-  @Column(name = "idUser")
-  private Integer idUser;
+  @ManyToOne()
+  @JoinColumn(name = "idUser")
+  private User idUser;
 
   /**
    * Variable language de type Tag.

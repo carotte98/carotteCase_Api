@@ -32,7 +32,7 @@ CREATE TABLE Post(
    idTag INT NOT NULL,
    idUser INT NOT NULL,
    PRIMARY KEY(idPost),
-   FOREIGN KEY(idCat) REFERENCES Tags(idTag),
+   FOREIGN KEY(idTag) REFERENCES Tags(idTag),
    FOREIGN KEY(idUser) REFERENCES utilisateur(idUser)
 )ENGINE=InnoDB;
 
