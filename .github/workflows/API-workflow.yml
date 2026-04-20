@@ -9,9 +9,16 @@ on:
       - "pom.xml"
 
 jobs:
+
   build:
     name: Build and analyse
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_DATABASE: codecase
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
