@@ -48,9 +48,6 @@ INSERT INTO codecase.utilisateur
 (idUser, pseudoUser, passwordUser, signupDateUser, lastSignInUser, emailUser, avatarUser, `Role`)
 VALUES(1, 'Anonyme', 'Anonyme', '2026-04-15', '2026-04-15', 'anonyme@test.fr', 'avatar.png', 'USER');
 
-INSERT INTO codecase.utilisateur
-(idUser, pseudoUser, passwordUser, signupDateUser, lastSignInUser, emailUser, avatarUser, `Role`)
-VALUES(1, 'Anonyme', 'Anonyme', '2026-04-15', '2026-04-15', 'anonyme@test.fr', 'avatar.png', 'USER');
 
 INSERT INTO codecase.Tags (idTag, intituleTag) VALUES(3, 'CSS');
 INSERT INTO codecase.Tags (idTag, intituleTag) VALUES(4, 'HTML');
