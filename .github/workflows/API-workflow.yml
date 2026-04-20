@@ -17,8 +17,9 @@ jobs:
       mysql_server:
         image: mysql:8.0
         env:
+          MYSQL_URL: ${{ secrets.MYSQL_URL }}
           MYSQL_USER: ${{ secrets.MYSQL_USER }}
-          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
           MYSQL_DATABASE: codecase
         ports:
           - 3306:3306
