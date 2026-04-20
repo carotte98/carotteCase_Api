@@ -20,6 +20,7 @@ jobs:
           MYSQL_URL: ${{ secrets.MYSQL_URL }}
           MYSQL_USER: ${{ secrets.MYSQL_USER }}
           MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
           MYSQL_DATABASE: codecase
         ports:
           - 3306:3306
