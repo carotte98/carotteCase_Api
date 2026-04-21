@@ -80,8 +80,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: dchourasia/ms-teams-notification@1.0
+      - uses: jdcargile/ms-teams-notification@v1.4
         if: always()
         with:
           github-token: ${{ github.token }}
-          webhook-uri: ${{ secrets.TEAMS_WEBHOOK_TOKEN }}
+          ms-teams-webhook-uri: ${{ secrets.TEAMS_WEBHOOK_TOKEN }}
+          notification-summary: Deployement finished !
+          notification-color: 17a2b8
+          timezone: Paris
+          verbose-logging: true
