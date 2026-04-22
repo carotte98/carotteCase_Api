@@ -101,8 +101,8 @@ jobs:
       - name: Connect to Docker Hub
         uses: docker/login-action@v3
         with:
-          - username: ${{ secrets.DOCKERHUB_USER }}
-          - password: ${{ secrets.DOCKERHUB_PASSWORD }}
+           username: ${{ secrets.DOCKERHUB_USER }}
+           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Download a single artifact
         uses: actions/download-artifact@v4
