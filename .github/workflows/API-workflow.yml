@@ -89,3 +89,47 @@ jobs:
           notification-color: 17a2b8
           timezone: Paris
           verbose-logging: true
+
+  docker-build-image-api:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Connect to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          - username: ${{ secrets.DOCKERHUB_USER }}
+          - password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Download a single artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: CarotteCaseAPI
+
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USER }}/carottecaseapi:latest
+
+      - run: echo "This job's status is ${{ job.status }}
+
+  Team_Notifications_Docker:
+    name: MS Teams Docker
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: jdcargile/ms-teams-notification@v1.4
+        if: always()
+        with:
+          github-token: ${{ github.token }}
+          ms-teams-webhook-uri: ${{ secrets.TEAMS_WEBHOOK_TOKEN }}
+          notification-summary: Push to Docker done !
+          notification-color: 17a2b8
+          timezone: Paris
+          verbose-logging: true
