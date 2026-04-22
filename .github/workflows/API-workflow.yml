@@ -117,7 +117,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USER }}/carottecaseapi:latest
 
-      - run: echo "This job's status is ${{ job.status }}
+      - run: echo "This job's status is ${{ job.status }}"
 
   Team_Notifications_Docker:
     name: MS Teams Docker

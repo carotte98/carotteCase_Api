@@ -8,4 +8,4 @@ EXPOSE 9002
 
 LABEL authors="Mordant Thierry"
 
-CMD ["java", "-jar", "carotteCase_Api.jar"]
+CMD ["java", "-jar", "CarotteCaseAPI.jar"]
