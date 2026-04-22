@@ -2,7 +2,7 @@ FROM eclipse-temurin:25
 
 WORKDIR /app
 
-COPY CarotteCaseAPI.jar /app/CarotteCaseAPI.jar
+COPY codecaseapi-0.0.1-SNAPSHOT.jar /app/CarotteCaseAPI.jar
 
 EXPOSE 9002
 
